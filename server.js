@@ -5,11 +5,14 @@ const morgan = require('morgan')
 
 //middleware
 app.use(morgan('dev'))
+app.use(express.json())
 
 
 // Step 3
-app.get('/api',(req,res)=>{
+app.post('/api',(req,res)=>{
     //code
+    const { username,password } = req.body
+    console.log(username,password)
     res.send('Hello World')
 })
 
