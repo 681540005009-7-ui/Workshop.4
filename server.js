@@ -4,19 +4,14 @@ const app = express()
 const morgan = require('morgan')
 
 const authRouter = require('./routes/auth')
-const category = require('./routes/category')
+const categoryRouter = require('./routes/category')
 
 //middleware
 app.use(morgan('dev'))
 app.use(express.json())
 
-app.use('/api',authRouter,(req,res)=>{
-    res.send('Hello register')
-})
-    
-app.use('/api',category,(req,res)=>{
-    res.send('Hello category')
-})
+app.use('/api',authRouter)
+app.use('/api',category)
 
 // Step 3
 app.post('/api',(req,res)=>{
